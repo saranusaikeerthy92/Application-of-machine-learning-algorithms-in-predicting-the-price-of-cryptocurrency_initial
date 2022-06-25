@@ -46,6 +46,5 @@ st.write('3. [bitinfocharts](https://bitinfocharts.com/comparison/bitcoin-price.
 st.write('4. [Investing](https://www.investing.com/)')
 
 st.markdown('<p style="background-color:#d1eeea;color:#000000;font-size:24px;border-radius:2%;"><b> Contact Me<b></p>', unsafe_allow_html=True)
-st.write('1. [Linkedin](https://www.linkedin.com/in/rohan-sawant7978)')
-st.write('2. [GitHub](https://github.com/rohansawant7978)')
-st.write('3. Email-rohansawant7978@gmail.com')
+st.write('1. [GitHub](https://github.com/saranusaikeerthy92)')
+st.write('2. Email-saranukeerthy@gmail.com')
