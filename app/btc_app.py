@@ -8,7 +8,7 @@ from datetime import datetime
 
 st.title('Bitcoin Closing Price Forecasting')
 st.header('Using Linear Regression')
-st.markdown('created by: **Rohan Sawant**')
+st.markdown('created by: **Sai Keerthy Saranu**')
 
 feature_df,pred = pred()
 pred = round(pred,1)
