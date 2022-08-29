@@ -15,7 +15,7 @@ def pred():
     scraped_output = (soup.split('[[')[1]).split('{labels')[0][0:-2]
     date_value_array = scraped_output.replace('new Date(','').replace(')','').replace('[','').replace(']','').replace('"','').replace('/','-').split(',')
     data_dict = dict(zip(date_value_array[::2],date_value_array[1::2]))
-    avg_transaction_value = data_dict[(datetime.today()-timedelta(days=1)).strftime('%Y-%m-%d')]
+    avg_transaction_value = data_dict[(datetime.today()-timedelta(days=2)).strftime('%Y-%m-%d')]
     avg_tr_value_df = pd.DataFrame()
     avg_tr_value_df['Date'] = pd.to_datetime(date_value_array[::2])
     avg_tr_value_df['avg_transaction_value'] = pd.to_numeric(date_value_array[1::2])
@@ -46,7 +46,7 @@ def pred():
                         'ema30 avg_transaction_value', 'tema90 avg_transaction_value',
                         'opening_price', 'tema7 closing_price', 'bband_upper30 closing_price']]
 
-    sgd_reg = pickle.load(open('linear_reg_10_25.sav', 'rb'))
+    sgd_reg = pickle.load(open('linear_reg_10_23.sav', 'rb'))
 
     X = final_df.drop(['Date'],axis=1)
 

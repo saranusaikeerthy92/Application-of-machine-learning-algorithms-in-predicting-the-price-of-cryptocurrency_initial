@@ -4,17 +4,17 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 import random
 from pytz import timezone 
-from datetime import datetime
+from datetime import datetime,timedelta
 
 st.title('Bitcoin Closing Price Forecasting')
-st.header('Using Linear Regression')
+st.header('Using Bi Long Short Term Memory')
 st.markdown('created by: **Sai Keerthy Saranu**')
 
 feature_df,pred = pred()
 pred = round(pred,1)
 actual = get_current_close_price()
 
-st.markdown(f'<p style="background-color:#d1eeea;color:#000000;font-size:24px;border-radius:2%;"><b> Prediction for date {datetime.now().strftime("%d-%m-%Y")} <b></p>', unsafe_allow_html=True)
+st.markdown(f'<p style="background-color:#d1eeea;color:#000000;font-size:24px;border-radius:2%;"><b> Prediction for date {(datetime.now()+timedelta(days=1)).strftime("%d-%m-%Y")} <b></p>', unsafe_allow_html=True)
 st.markdown("""<style>div.stButton > button:first-child {background-color: #d1eeea;}</style>""", unsafe_allow_html=True)
 submit = st.button('Refresh to get latest price')
 if submit:
@@ -23,7 +23,7 @@ if submit:
 
 close_price_df = get_df()
 
-heat_map = ff.create_annotated_heatmap([[pred,actual]],annotation_text=[[f'Predicted Price <br> <b>${round(pred,1)}<b>',f'Latest Price <br> <b>${actual}<b>']], colorscale='Teal',hoverinfo='none')
+heat_map = ff.create_annotated_heatmap([[pred,actual]],annotation_text=[[f'Predicted Price <br> <b>${round(pred,1)}<b>',f'Actual Price <br> <b>${actual}<b>']], colorscale='Teal',hoverinfo='none')
 for i in range(len(heat_map.layout.annotations)):
     heat_map.layout.annotations[i].font.size = 25
 st.plotly_chart(heat_map)
